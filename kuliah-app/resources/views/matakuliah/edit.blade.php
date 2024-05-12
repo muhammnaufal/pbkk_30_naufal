@@ -20,15 +20,17 @@
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('kelas.store') }}" method="POST">
+                        <form action="{{ route('matakuliah.update', $dataMatakuliah->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Kelas</label>
-                                <input type="text" name="nama_kelas" class="form-control"
-                                    placeholder="Enter nama kelas">
+                                <label for="exampleInputEmail1">Nama Mata Kuliah</label>
+                                <input type="text" name="nama_matakuliah" class="form-control"
+                                    placeholder="Enter nama mata kuliah"
+                                    value="{{ old('nama_matakuliah', $dataMatakuliah->nama_matakuliah) }}">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with
                                     anyone else.</small>
-                                @error('nama_kelas')
+                                @error('nama_matakuliah')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>

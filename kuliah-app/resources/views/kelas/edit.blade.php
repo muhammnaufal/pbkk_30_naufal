@@ -20,12 +20,14 @@
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('kelas.store') }}" method="POST">
+                        <form action="{{ route('kelas.update', $dataKelas->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama Kelas</label>
                                 <input type="text" name="nama_kelas" class="form-control"
-                                    placeholder="Enter nama kelas">
+                                    placeholder="Enter nama kelas"
+                                    value="{{ old('nama_kelas', $dataKelas->nama_kelas) }}">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with
                                     anyone else.</small>
                                 @error('nama_kelas')

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data Kelas</title>
+    <title>Data Mata Kuliah</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -15,33 +15,34 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Data Kelas</h3>
+                    <h3 class="text-center my-4">Data Mata Kuliah</h3>
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('kelas.create') }}" class="btn btn-md btn-info mb-3">TAMBAH</a>
+                        <a href="{{ route('matakuliah.create') }}" class="btn btn-md btn-info mb-3">TAMBAH</a>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Nama Kelas</th>
+                                    <th scope="col">Nama Mata Kuliah</th>
                                     <th scope="col" style="width: 20%">ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($dataKelas as $index => $kelas)
+                                @forelse ($dataMatakuliah as $index => $matakuliah)
                                     <tr>
                                         <td class="text-center">
                                             {{ ++$index }}
                                         </td>
-                                        <td>{{ $kelas->nama_kelas }}</td>
+                                        <td>{{ $matakuliah->nama_matakuliah }}</td>
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                action="{{ route('kelas.destroy', $kelas->id) }}" method="POST">
-                                                <a href="{{ route('kelas.show', $kelas->id) }}"
+                                                action="{{ route('matakuliah.destroy', $matakuliah->id) }}"
+                                                method="POST">
+                                                <a href="{{ route('matakuliah.show', $matakuliah->id) }}"
                                                     class="btn btn-sm btn-dark">SHOW</a>
-                                                <a href="{{ route('kelas.edit', $kelas->id) }}"
+                                                <a href="{{ route('matakuliah.edit', $matakuliah->id) }}"
                                                     class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
                                                 @method('DELETE')
@@ -51,7 +52,7 @@
                                     </tr>
                                 @empty
                                     <div class="alert alert-danger">
-                                        Data Kelas Belum Ada.
+                                        Data Mata Kuliah Belum Ada.
                                     </div>
                                 @endforelse
                             </tbody>
